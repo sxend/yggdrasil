@@ -12,13 +12,13 @@ test.afterEach(async t => {
   const result = await TestSupport.closeProxy(t.context.proxy);
 })
 test('load index.html', async (t) => {
-  const message = await t.context.nightmare
+  const counter = await t.context.nightmare
     .goto('file:// ' + process.cwd() + '/src/test/resources/index.html')
     .wait(() => {
-      return !!window['AppModule'];
+      return !!window['counter'];
     })
     .evaluate(() => {
-      return window['AppModule'].getMessage();
+      return window['counter'];
     });
-  t.is(message, "execute in production");
+  t.is(counter, 1);
 });

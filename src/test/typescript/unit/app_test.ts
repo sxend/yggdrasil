@@ -1,8 +1,10 @@
 import test from 'ava';
-import * as Ygg from '../../../main/typescript/index';
+import { Yggdrasil, seeding } from '../../../main/typescript/yggdrasil';
 
-test('Ygg.q', async function(t) {
-  // const message = await App.getMessage();
-  // t.truthy(message);
-  // t.regex(message, /^execute in /);
+test.cb('Ygg.q', (t) => {
+  const Ygg = seeding();
+  Ygg.q.push(() => {
+    t.pass();
+    t.end();
+  });
 });
