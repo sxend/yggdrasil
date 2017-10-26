@@ -1,4 +1,5 @@
 import { Yggdrasil } from '../yggdrasil';
+import { assign } from '../utils';
 
 export interface Events {
   on(name: string, callback: Function): Yggdrasil;
@@ -14,5 +15,5 @@ export function events(ygg: Yggdrasil): void {
       return ygg;
     }
   }
-  Object.assign(ygg, impl);
+  assign(ygg, impl);
 }

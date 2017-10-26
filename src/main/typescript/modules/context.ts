@@ -1,4 +1,5 @@
 import { Yggdrasil } from '../yggdrasil';
+import { assign } from '../utils';
 
 export interface Context {
   context(scope?: string): any;
@@ -12,5 +13,5 @@ export function context(ygg: Yggdrasil): void {
       return ctx;
     }
   }
-  Object.assign(ygg, impl);
+  assign(ygg, impl);
 }

@@ -1,4 +1,5 @@
 import { Yggdrasil } from '../yggdrasil';
+import { assign } from '../utils';
 
 export interface Cluster {
   join(wdw: Window): Yggdrasil;
@@ -10,5 +11,5 @@ export function cluster(ygg: Yggdrasil): void {
       return ygg;
     }
   }
-  Object.assign(ygg, impl);
+  assign(ygg, impl);
 }

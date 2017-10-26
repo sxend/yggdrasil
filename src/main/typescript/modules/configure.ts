@@ -1,4 +1,5 @@
 import { Yggdrasil } from '../yggdrasil';
+import { assign } from '../utils';
 
 export interface Configure {
   configure(configuration: any): Yggdrasil;
@@ -9,13 +10,15 @@ export function configure(ygg: Yggdrasil): void {
   const __configuration: any = { // defauts
   };
   const impl: Configure = {
-    configure(configuration: any) {
-      Object.assign(__configuration, configuration);
+    configure(configuration: any = {}) {
+      const context = ygg.context();
+      assign(ygg.configuration(), configuration);
       return ygg;
     },
     configuration() {
-      return __configuration;
+      const context = ygg.context();
+      return (context['configuration'] = context['configuration'] || __configuration);
     }
   }
-  Object.assign(ygg, impl);
+  assign(ygg, impl);
 }
