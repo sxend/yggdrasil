@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "outDir": "target/tsc",
+    "target": "es5",
+    "lib": ["dom", "es2015", "es2015.promise"]
+  },
+  "include": [
+    "src/main/typescript/**/*",
+    "src/test/typescript/**/*",
+  ],
+  "exclude": [
+    "node_modules/",
+  ]
+}

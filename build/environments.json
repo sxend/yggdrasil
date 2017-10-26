@@ -1,0 +1,10 @@
+{
+  "production": {
+    "YggdrasilObject": "Yggdrasil",
+    "YggdrasilObjectAlias": "Ygg"
+  },
+  "staging": {
+    "YggdrasilObject": "Yggdrasil",
+    "YggdrasilObjectAlias": "Ygg"
+  }
+}
