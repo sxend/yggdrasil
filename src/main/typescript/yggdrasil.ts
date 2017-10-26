@@ -8,11 +8,10 @@ import { Queue, queue } from './modules/queue';
 export interface Yggdrasil extends Context, Configure, Cluster, Events, Queue {
 }
 
-const __global = (0, eval)('this');
-const YggdrasilObject = __global["YggdrasilObject"] || '/* @echo YggdrasilObject */';
-const YggdrasilObjectAlias = __global["YggdrasilObjectAlias"] || '/* @echo YggdrasilObjectAlias */';
-
 export function seeding(): Yggdrasil {
+  const __global = (0, eval)('this');
+  const YggdrasilObject = __global["YggdrasilObject"] || '/* @echo YggdrasilObject */';
+  const YggdrasilObjectAlias = __global["YggdrasilObjectAlias"] || '/* @echo YggdrasilObjectAlias */';
   const ygg = __global[YggdrasilObject] = __global[YggdrasilObjectAlias] =
     __global[YggdrasilObject] || __global[YggdrasilObjectAlias] || {};
   if (ygg.__isSeeded) {
