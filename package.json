@@ -8,21 +8,25 @@
     "test:unit": "ava --verbose ./target/tsc/test/typescript/unit/**/*.js",
     "test:e2e": "ava --verbose ./target/tsc/test/typescript/e2e/**/*.js",
     "test": "npm run build && npm run test:unit && npm run test:e2e",
-    "build": "tsc && webpack --config ./webpack.config.js",
-    "build:watch": "tsc --watch & webpack --watch --config ./webpack.config.js"
+    "format-code": "tsfmt -r --no-tslint --no-editorconfig --no-vscode",
+    "format-test-code": "tsfmt -r --no-tslint --no-editorconfig --no-vscode --useTsconfig ./tsconfig.json ./src/test/**/*.ts",
+    "pre-build": "npm run format-code && npm run format-test-code",
+    "build": "npm run pre-build && tsc && webpack --config ./webpack.config.js",
+    "build:watch": "npm run pre-build && tsc --watch & webpack --watch --config ./webpack.config.js"
   },
   "author": "sxend",
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.22.0",
     "awesome-typescript-loader": "^3.2.3",
+    "es6-promise": "^4.1.1",
     "get-port": "^3.2.0",
+    "hoxy": "^3.2.2",
     "nightmare": "^2.10.0",
     "preprocess-loader": "^0.2.2",
     "typescript": "^2.5.3",
-    "webpack": "^3.7.1",
-    "hoxy": "^3.2.2",
-    "es6-promise": "^4.1.1"
+    "typescript-formatter": "^6.1.0",
+    "webpack": "^3.7.1"
   },
   "dependencies": {}
 }
