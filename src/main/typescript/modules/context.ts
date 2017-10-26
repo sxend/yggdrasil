@@ -6,11 +6,10 @@ export interface Context {
 }
 
 export function context(ygg: Yggdrasil): void {
-  const ctx: any = {
-  };
+  const ctx: any = {};
   const impl: Context = {
     context(scope: string = "root") {
-      return ctx;
+      return ctx[scope] = ctx[scope] || {};
     }
   }
   assign(ygg, impl);
