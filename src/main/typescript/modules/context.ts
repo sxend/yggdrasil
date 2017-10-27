@@ -8,8 +8,14 @@ export interface Context {
 export function context(ygg: Yggdrasil): void {
   const ctx: any = {};
   const impl: Context = {
-    context(scope: string = "root") {
-      return ctx[scope] = ctx[scope] || {};
+    context(namespace: string = "root") {
+      let spaces = namespace.split(".");
+      let _context = {};
+      while (spaces.length > 0) {
+        const scope = spaces.shift();
+        _context = ctx[scope] = ctx[scope] || {};
+      }
+      return _context;
     }
   }
   assign(ygg, impl);
