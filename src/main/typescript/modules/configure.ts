@@ -11,13 +11,13 @@ export function configure(ygg: Yggdrasil): void {
   };
   const impl: Configure = {
     configure(configuration: any = {}) {
-      const context = ygg.context();
+      const storage = ygg.storage();
       assign(ygg.configuration(), configuration);
       return ygg;
     },
     configuration() {
-      const context = ygg.context();
-      return (context['configuration'] = context['configuration'] || __configuration);
+      const storage = ygg.storage();
+      return (storage['configuration'] = storage['configuration'] || __configuration);
     }
   }
   assign(ygg, impl);

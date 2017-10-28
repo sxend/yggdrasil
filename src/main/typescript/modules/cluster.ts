@@ -16,7 +16,7 @@ export function cluster(ygg: Yggdrasil): void {
   });
   const impl: Cluster = {
     join(wdw: Window = window): Yggdrasil {
-      const state = ygg.context("cluster.state");
+      const state = ygg.storage("cluster.state");
       const leaves = state['leaves'] = state['leaves'] || [];
       if (!leaves.includes(wdw)) {
         const id = leaves[leaves.push(wdw) - 1]
