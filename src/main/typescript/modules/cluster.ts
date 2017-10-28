@@ -1,4 +1,4 @@
-import { Yggdrasil } from '../yggdrasil';
+import { Yggdrasil, YggdrasilObject, seeding } from '../yggdrasil';
 import { assign } from '../utils';
 
 export interface Cluster {
@@ -16,12 +16,6 @@ export function cluster(ygg: Yggdrasil): void {
   });
   const impl: Cluster = {
     join(wdw: Window = window): Yggdrasil {
-      const state = ygg.storage("cluster.state");
-      const leaves = state['leaves'] = state['leaves'] || [];
-      if (!leaves.includes(wdw)) {
-        const id = leaves[leaves.push(wdw) - 1]
-      } else {
-      }
       return ygg;
     },
     pub(name: string, message: any): Yggdrasil {

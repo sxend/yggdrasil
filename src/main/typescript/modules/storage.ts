@@ -6,14 +6,14 @@ export interface Storage {
 }
 
 export function storage(ygg: Yggdrasil): void {
-  const ctx: any = {};
+  const memory: any = {};
   const impl: Storage = {
     storage(namespace: string = "root") {
-      let spaces = namespace.split(".");
+      const spaces = namespace.split(".");
       let _storage = {};
       while (spaces.length > 0) {
         const scope = spaces.shift();
-        _storage = ctx[scope] = ctx[scope] || {};
+        _storage = memory[scope] = memory[scope] || {};
       }
       return _storage;
     }

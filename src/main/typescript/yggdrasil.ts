@@ -9,12 +9,13 @@ import { assign } from './utils';
 export interface Yggdrasil extends Storage, Configure, Cluster, Events, Queue {
 }
 
-export function seeding(): Yggdrasil {
-  const __global = (0, eval)('this');
-  const YggdrasilObject = __global["YggdrasilObject"] || '/* @echo YggdrasilObject */';
-  const YggdrasilObjectAlias = __global["YggdrasilObjectAlias"] || '/* @echo YggdrasilObjectAlias */';
-  const ygg = __global[YggdrasilObject] = __global[YggdrasilObjectAlias] =
-    __global[YggdrasilObject] || __global[YggdrasilObjectAlias] || {};
+const __global = (0, eval)('this');
+export const YggdrasilObject = __global["YggdrasilObject"] || '/* @echo YggdrasilObject */';
+export const YggdrasilObjectAlias = __global["YggdrasilObjectAlias"] || '/* @echo YggdrasilObjectAlias */';
+
+export function seeding(wdw: Window = window): Yggdrasil {
+  const ygg = wdw[YggdrasilObject] = wdw[YggdrasilObjectAlias] =
+    wdw[YggdrasilObject] || wdw[YggdrasilObjectAlias] || {};
   if (ygg.__isSeeded) {
     return <Yggdrasil>ygg;
   }
